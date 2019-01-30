@@ -3,10 +3,10 @@
 //*** SMARTPHONE DOORLOCK ***//
 
 // ************* PARAMETERS *************** //
-// 
+//
 // Parameters: unlockedState and lockedState
 // These parameters are in microseconds.
-// The servo pulse determines the degree 
+// The servo pulse determines the degree
 // at which the horn is positioned. In our
 // case, we get about 100 degrees of rotation
 // from 1ms-2.2ms pulse width. You will need
@@ -37,7 +37,7 @@ var motorPin = 14;
 var buttonPin = 4
 var ledPin = 17
 
-var blynkToken = 'blynk_token_here';
+var blynkToken = 'daec123139994f7cae5499c3a86a49f8';
 
 // *** Start code *** //
 
@@ -93,7 +93,7 @@ function lockDoor() {
 
 	//notify
   	blynk.notify("Door has been locked!");
-  	
+
   	//After 1.5 seconds, the door lock servo turns off to avoid stall current
   	setTimeout(function(){motor.servoWrite(0)}, 1500)
 }
@@ -104,7 +104,7 @@ function unlockDoor() {
 	locked = false
 
 	//notify
-  	blynk.notify("Door has been unlocked!"); 
+  	blynk.notify("Door has been unlocked!");
 
   	//After 1.5 seconds, the door lock servo turns off to avoid stall current
   	setTimeout(function(){motor.servoWrite(0)}, 1500)
