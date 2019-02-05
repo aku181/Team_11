@@ -85,6 +85,7 @@ v0.on('write', function(param) {
 
 blynk.on('connect', function() { console.log("Blynk ready."); });
 blynk.on('disconnect', function() { console.log("DISCONNECT"); });
+videoStream();
 
 function lockDoor() {
 	motor.servoWrite(lockedState);
@@ -112,5 +113,6 @@ function unlockDoor() {
 
 function videoStream(){
 
-  Blynk.setProperty(V1, "url", "http:192.168.0.179:8000")
+  Blynk.setProperty(V2, "url", "http://192.168.0.179:8000")
+  blynk.notify("Video Streaming");
 }
