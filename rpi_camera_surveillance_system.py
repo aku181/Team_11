@@ -8,7 +8,7 @@ import logging
 import socketserver
 from threading import Condition
 from http import server
-
+'''
 PAGE="""\
 <html>
 <head>
@@ -76,7 +76,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
         else:
             self.send_error(404)
             self.end_headers()
-
+'''
 class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
     allow_reuse_address = True
     daemon_threads = True

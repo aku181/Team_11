@@ -57,6 +57,7 @@ var Gpio = require('pigpio').Gpio,
 var Blynk = require('blynk-library');
 var blynk = new Blynk.Blynk(blynkToken);
 var v0 = new blynk.VirtualPin(0);
+var v1 = new blynk.VirtualPin(0);
 
 console.log("locking door")
 lockDoor()
@@ -113,6 +114,6 @@ function unlockDoor() {
 
 function videoStream(){
 
-  Blynk.setProperty(V2, "url", "http://192.168.0.179:8000")
+  Blynk.setProperty(V1, "url", "http://192.168.0.179:8000")
   blynk.notify("Video Streaming");
 }
