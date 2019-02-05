@@ -112,5 +112,5 @@ function unlockDoor() {
 
 function videoStream(){
 
-  Blynk.setProperty(V1, "url", "http://my_new_video_url")
+  Blynk.setProperty(V1, "url", "http:192.168.0.179:8000")
 }
