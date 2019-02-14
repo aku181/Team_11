@@ -1,1 +1,2 @@
 sudo node doorlock.js
+python3 
