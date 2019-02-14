@@ -1,2 +1,2 @@
 sudo node doorlock.js
-python3 
+./ stream.sh 
