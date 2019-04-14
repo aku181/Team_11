@@ -37,7 +37,7 @@ var motorPin = 14;
 var buttonPin = 4
 var ledPin = 17
 
-var blynkToken = 'daec123139994f7cae5499c3a86a49f8';
+var blynkToken = '548cb79601b44097843b3d4fc5be504b';
 
 // *** Start code *** //
 
@@ -56,6 +56,11 @@ var Gpio = require('pigpio').Gpio,
 //Setup blynk
 var Blynk = require('blynk-library');
 var blynk = new Blynk.Blynk(blynkToken);
+//var blynk = new Blynk.Blynk(blynkToken,
+// options= { addr:"127.0.0.1", port:443 }
+//);
+
+
 var v0 = new blynk.VirtualPin(0);
 
 
