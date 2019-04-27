@@ -46,7 +46,7 @@ lockDoor()
 
 button.on('interrupt', function (level) {
 	console.log("level: " + level + " locked: " + locked)
-	if (level == 0) {
+	if (level == 1) {
 		if (locked) {
 			unlockDoor()
 		} else {
@@ -56,8 +56,7 @@ button.on('interrupt', function (level) {
 });
 
 pressure.on('interrupt', function (level) {
-	console.log("level: " + level + " locked: " + locked)
-	if (level == 1) {
+	if (level != -1) {
 		blynk.notify("Someone is at the door!");
 	}
 });
