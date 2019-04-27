@@ -1,41 +1,13 @@
 #!/usr/bin/env node
 
-//*** SMARTPHONE DOORLOCK ***//
 
-// ************* PARAMETERS *************** //
-//
-// Parameters: unlockedState and lockedState
-// These parameters are in microseconds.
-// The servo pulse determines the degree
-// at which the horn is positioned. In our
-// case, we get about 100 degrees of rotation
-// from 1ms-2.2ms pulse width. You will need
-// to play with these settings to get it to
-// work properly with your door lock
-//
-// Parameters: motorPin
-// The GPIO pin the signal wire on your servo
-// is connected to
-//
-// Parameters: buttonPin
-// The GPIO pin the signal wire on your button
-// is connected to. It is okay to have no button connected
-//
-// Parameters: ledPin
-// The GPIO pin the signal wire on your led
-// is connected to. It is okay to have no ledconnected
-//
-// Parameter: blynkToken
-// The token which was generated for your blynk
-// project
-//
-// **************************************** //
 var unlockedState = 1000;
 var lockedState = 2200;
 
 var motorPin = 14;
 var buttonPin = 4
 var ledPin = 17
+var pressurePin = 27
 
 var blynkToken = '548cb79601b44097843b3d4fc5be504b';
 
@@ -47,6 +19,11 @@ var locked = true
 var Gpio = require('pigpio').Gpio,
   motor = new Gpio(motorPin, {mode: Gpio.OUTPUT}),
   button = new Gpio(buttonPin, {
+    mode: Gpio.INPUT,
+    pullUpDown: Gpio.PUD_DOWN,
+    edge: Gpio.FALLING_EDGE
+  }),
+  pressure = new Gpio(pressurePin, {
     mode: Gpio.INPUT,
     pullUpDown: Gpio.PUD_DOWN,
     edge: Gpio.FALLING_EDGE
@@ -75,6 +52,13 @@ button.on('interrupt', function (level) {
 		} else {
 			lockDoor()
 		}
+	}
+});
+
+pressure.on('interrupt', function (level) {
+	console.log("level: " + level + " locked: " + locked)
+	if (level == 1) {
+		blynk.notify("Someone is at the door!");
 	}
 });
 
