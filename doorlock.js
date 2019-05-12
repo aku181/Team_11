@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+//Team 11 WSU
 
 var unlockedState = 1000;
 var lockedState = 2200;
